@@ -1,0 +1,8 @@
+.btnToCart {
+  color: #7db122 !important;
+  transition: color .3s ease-in-out;
+
+  &:hover {
+    color: #59801d !important;
+  }
+}

@@ -1,0 +1,46 @@
+.card {
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+
+  .cardImg {
+    max-width: 350px;
+    width: 100%;
+
+    .img {
+      height: 300px;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .cardCategory {
+    text-transform: uppercase;
+    color: #7db122;
+  }
+
+  .cardTitle {
+    color: #0066ff;
+  }
+
+  .cardPrice {
+    color: #ab0000;
+
+    .priceCurrency {
+      color: #7db122;
+    }
+  }
+
+  .rating {
+    margin-bottom: 20px;
+  }
+
+  .cardButtons {
+    margin-top: auto;
+
+    .btn {
+      color: #7db122;
+    }
+  }
+}

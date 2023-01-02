@@ -1,0 +1,15 @@
+.wrapper {
+  padding: 50px 0;
+
+  .productsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+}
+
+.title {
+  color: #000;
+}
+

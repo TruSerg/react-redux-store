@@ -1,0 +1,47 @@
+.header {
+  padding: 30px 0;
+  background-color: #0088ff;
+
+  .headerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    .headerItem {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      .headerSearch {
+        max-width: 500px;
+        width: 100%;
+      }
+    }
+
+    .headerIconButtons {
+      display: flex;
+      gap: 20px;
+
+      .iconUser {
+        color: #fff;
+        transition: color .3s ease-in-out;
+
+        &:hover {
+          color: #90c6fe;
+        }
+      }
+
+      .iconCart {
+        color: #fff;
+        transition: color .3s ease-in-out;
+
+        &:hover {
+          color: #90c6fe;
+        }
+      }
+    }
+  }
+
+}

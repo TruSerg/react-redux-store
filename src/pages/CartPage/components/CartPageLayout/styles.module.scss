@@ -1,0 +1,75 @@
+.tableWrapper {
+  padding: 50px 0;
+
+  .cartTitle {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #7db122;
+  }
+
+  .tableImage {
+    width: 250px;
+
+    .img {
+      height: 150px;
+    }
+  }
+
+  .tableTitle {
+    text-align: center;
+    width: 300px;
+
+    .productTitle {
+      font-size: 18px;
+      color: #0066ff;
+      margin-bottom: 20px;
+    }
+
+    .btnDetails {
+      color: #7db122 !important;
+      transition: color .3s ease-in-out;
+
+      &:hover {
+        color: #59801d !important;
+      }
+    }
+  }
+
+  .tableRating {
+    text-align: center;
+    width: 300px;
+  }
+
+  .tableButtons {
+    width: 300px;
+    text-align: center;
+
+    .iconGroup {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+
+      .iconButton {
+        color: #7db122;
+        transition: color .3s ease-in-out;
+
+        &:hover {
+          color: #59801d;
+        }
+      }
+    }
+  }
+
+  .tablePrice {
+    font-size: 18px;
+    color: #ab0000;
+    text-align: end;
+
+    .priceCurrency {
+      color: #7db122;
+    }
+  }
+}
+

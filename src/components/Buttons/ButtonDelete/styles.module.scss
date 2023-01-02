@@ -1,0 +1,8 @@
+.btnDelete {
+  color: #ff0000 !important;
+  transition: color .3s ease-in-out;
+
+  &:hover {
+    color: #ac0000 !important;
+  }
+}
