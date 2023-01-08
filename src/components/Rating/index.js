@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Rating } from "@mui/material";
 
 const BasicRating = ({ value }) => {
@@ -8,4 +9,4 @@ const BasicRating = ({ value }) => {
   );
 };
 
-export default BasicRating;
+export default memo(BasicRating);

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { CircularProgress } from "@mui/material";
 
 import style from "./styles.module.scss";
@@ -10,4 +11,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default memo(Loader);

@@ -28,7 +28,9 @@ const ProductDetailsPageLayout = ({
                 price={product.price}
                 rating={product.rating.rate}
                 isAddItemToCart={isAddItemToCart}
-                handleAddProductToCart={() => handleAddProductToCart()}
+                handleAddProductToCart={() =>
+                  handleAddProductToCart(product.id)
+                }
               />
             </div>
           </>

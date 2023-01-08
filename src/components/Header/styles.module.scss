@@ -3,25 +3,25 @@
   background-color: #0088ff;
 
   .headerWrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: 50px 1fr 150px;
     align-items: center;
-    justify-content: space-between;
     gap: 20px;
 
-    .headerItem {
-      width: 100%;
+    .headerCatalog {
       display: flex;
       align-items: center;
-      gap: 30px;
+      min-height: 50px;
+    }
 
-      .headerSearch {
-        max-width: 500px;
-        width: 100%;
-      }
+    .headerSearch {
+      max-width: 500px;
+      width: 100%;
     }
 
     .headerIconButtons {
       display: flex;
+      justify-content: flex-end;
       gap: 20px;
 
       .iconUser {
@@ -43,5 +43,19 @@
       }
     }
   }
+}
 
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 0;
+
+    .headerWrapper {
+      grid-template-columns: repeat(2, 1fr);
+
+      .headerSearch {
+        grid-column: 1/3;
+        order: 1;
+      }
+    }
+  }
 }

@@ -1,7 +1,9 @@
+import { memo } from "react";
+
 import style from "./styles.module.scss";
 
-const Index = ({ children }) => {
+const Container = ({ children }) => {
   return <div className={style.container}>{children}</div>;
 };
 
-export default Index;
+export default memo(Container);

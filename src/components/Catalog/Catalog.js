@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { memo } from "react";
 
 import { getProductsCategories } from "../../store/getCategoriesSlice";
 
@@ -39,4 +40,4 @@ const Catalog = () => {
   );
 };
 
-export default Catalog;
+export default memo(Catalog);

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -15,4 +16,4 @@ const ButtonDetails = ({ size, color, handleGoToDetails }) => {
   );
 };
 
-export default ButtonDetails;
+export default memo(ButtonDetails);

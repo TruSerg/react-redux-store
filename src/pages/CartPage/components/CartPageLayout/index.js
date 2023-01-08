@@ -2,16 +2,7 @@ import { Link } from "react-router-dom";
 import { RemoveCircle } from "@mui/icons-material";
 import { AddCircle } from "@mui/icons-material";
 
-import {
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Paper,
-  IconButton,
-} from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 
 import { ROUTES } from "../../../../routes/routeNames";
 
@@ -25,67 +16,82 @@ import style from "./styles.module.scss";
 
 const CartPageLayout = ({
   cartList,
+  totalPrice,
   handleGoToDetails,
   handleDeleteProductFromCart,
+  handleProductQuantityIncrement,
+  handleProductQuantityDecrement,
 }) => {
   return (
     <div>
       <Container>
-        <div className={style.tableWrapper}>
+        <div className={style.cartWrapper}>
           <h2 className={style.cartTitle}>Cart</h2>
           <BackButton size="large" />
           {cartList.length === 0 ? (
             <CartIsEmptyImage />
           ) : (
-            <TableContainer component={Paper}>
-              <Table size="small" aria-label="a dense table">
-                <TableBody>
-                  {cartList.map(({ id, image, title, rating, price }) => (
-                    <TableRow key={id}>
-                      <TableCell className={style.tableImage} align="left">
-                        <img className={style.img} src={image} />
-                      </TableCell>
-                      <TableCell className={style.tableTitle} align="left">
-                        <p className={style.productTitle}>{title}</p>
-                        <Link
-                          to={ROUTES.PRODUCT_DETAILS_PAGE}
-                          onClick={() => handleGoToDetails(id)}
-                        >
-                          <Button className={style.btnDetails} size="medium">
-                            DETAILS
-                          </Button>
-                        </Link>
-                      </TableCell>
-                      <TableCell className={style.tableRating} align="left">
-                        <BasicRating value={rating.rate} />
-                      </TableCell>
-                      <TableCell className={style.tableButtons} align="left">
-                        <div className={style.iconGroup}>
-                          <IconButton className={style.iconButton}>
-                            <RemoveCircle color="inherit" fontSize="large" />
-                          </IconButton>
-                          <IconButton className={style.iconButton}>
-                            <AddCircle color="inherit" fontSize="large" />
-                          </IconButton>
-                        </div>
-                        <ButtonDelete
-                          handleDelete={() => handleDeleteProductFromCart(id)}
-                          size="large"
-                        />
-                      </TableCell>
-                      <TableCell className={style.tablePrice} align="left">
-                        {price} <span className={style.priceCurrency}>$</span>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                  <TableRow>
-                    <TableCell colSpan={3} />
-                    <TableCell align="right">Total price</TableCell>
-                    <TableCell align="right">total</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <div>
+              <div className={style.totalPriceWrapper}>
+                <span className={style.totalPriceTitle}>Total price:</span>
+                <span className={style.totalPrice}>
+                  {totalPrice.toFixed(2)}{" "}
+                  <span className={style.totalPriceCurrency}>$</span>
+                </span>
+              </div>
+              {cartList.map((item) => (
+                <div className={style.cartContent} key={item.id}>
+                  <div className={style.tableImage}>
+                    <img
+                      className={style.img}
+                      src={item.image}
+                      alt="product image"
+                    />
+                  </div>
+                  <div className={style.tableTitle}>
+                    <p className={style.productTitle}>{item.title}</p>
+                    <Link
+                      to={ROUTES.PRODUCT_DETAILS_PAGE}
+                      onClick={() => handleGoToDetails(item.id)}
+                    >
+                      <Button className={style.btnDetails} size="medium">
+                        DETAILS
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className={style.tableRating}>
+                    <BasicRating value={item.rating.rate} />
+                  </div>
+                  <div className={style.tableButtons}>
+                    <div className={style.iconGroup}>
+                      <IconButton
+                        className={style.iconButton}
+                        onClick={() => handleProductQuantityDecrement(item)}
+                      >
+                        <RemoveCircle color="inherit" fontSize="large" />
+                      </IconButton>
+                      <span className={style.quantityLabel}>
+                        {item.quantity}
+                      </span>
+                      <IconButton
+                        className={style.iconButton}
+                        onClick={() => handleProductQuantityIncrement(item)}
+                      >
+                        <AddCircle color="inherit" fontSize="large" />
+                      </IconButton>
+                    </div>
+                    <ButtonDelete
+                      handleDelete={() => handleDeleteProductFromCart(item.id)}
+                      size="large"
+                    />
+                  </div>
+                  <div className={style.tablePrice}>
+                    {(item.price * item.quantity).toFixed(2)}{" "}
+                    <span className={style.priceCurrency}>$</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </Container>

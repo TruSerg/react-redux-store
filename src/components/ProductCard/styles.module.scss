@@ -31,5 +31,19 @@
   }
 }
 
+@media (max-width: 768px) {
+  .card {
+    .cardImg {
+      height: 170px;
+    }
 
+    .cardTitle {
+      font-size: 18px;
+    }
+
+    .cardPrice {
+      font-size: 18px;
+    }
+  }
+}
 

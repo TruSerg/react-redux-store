@@ -1,4 +1,5 @@
-import InputBase from "@mui/material/InputBase";
+import { memo } from "react";
+import { InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 
@@ -13,7 +14,6 @@ const Search = styled("div")(({ theme }) => ({
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
     width: "auto",
   },
 }));
@@ -30,34 +30,28 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  width: "100%",
   color: "#fff",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
   },
 }));
 
 const Input = ({ value, onChange }) => {
   return (
-    <div>
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          value={value}
-          onChange={onChange}
-          placeholder="Search…"
-          inputProps={{ "aria-label": "search" }}
-        />
-      </Search>
-    </div>
+    <Search>
+      <SearchIconWrapper>
+        <SearchIcon />
+      </SearchIconWrapper>
+      <StyledInputBase
+        value={value}
+        onChange={onChange}
+        placeholder="Search…"
+        inputProps={{ "aria-label": "search" }}
+      />
+    </Search>
   );
 };
 
-export default Input;
+export default memo(Input);

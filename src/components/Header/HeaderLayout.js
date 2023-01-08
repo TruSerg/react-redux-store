@@ -15,11 +15,12 @@ const HeaderLayout = ({ searchValue, cartList, handleChange }) => {
     <div className={style.header}>
       <Container>
         <div className={style.headerWrapper}>
-          <div className={style.headerItem}>
+          <div className={style.headerCatalog}>
             <Catalog />
-            <div className={style.headerSearch}>
-              <Input value={searchValue} onChange={handleChange} />
-            </div>
+          </div>
+
+          <div className={style.headerSearch}>
+            <Input value={searchValue} onChange={handleChange} />
           </div>
 
           <div className={style.headerIconButtons}>
@@ -31,9 +32,9 @@ const HeaderLayout = ({ searchValue, cartList, handleChange }) => {
               </IconButton>
             </Link>
 
-            <IconButton className={style.iconUser}>
-              <AccountCircle fontSize="large" />
-            </IconButton>
+            {/*<IconButton className={style.iconUser}>*/}
+            {/*  <AccountCircle fontSize="large" />*/}
+            {/*</IconButton>*/}
           </div>
         </div>
       </Container>

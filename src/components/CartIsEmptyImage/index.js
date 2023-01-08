@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import CartIsEmpty from "../../static/img/empty-cart.jpg";
 
 import style from "./styles.module.scss";
@@ -10,4 +12,4 @@ const CartIsEmptyImage = () => {
   );
 };
 
-export default CartIsEmptyImage;
+export default memo(CartIsEmptyImage);

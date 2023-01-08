@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Button } from "@mui/material";
 
 import style from "./styles.module.scss";
@@ -14,4 +15,4 @@ const ButtonAddToCart = ({ size, handleAddProductToCart }) => {
   );
 };
 
-export default ButtonAddToCart;
+export default memo(ButtonAddToCart);

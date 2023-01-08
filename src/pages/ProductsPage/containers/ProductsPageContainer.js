@@ -57,7 +57,9 @@ const ProductsPageContainer = () => {
     (id) => {
       products.filter((product) => {
         if (product.id === id) {
-          dispatch(addProductToCart(product));
+          const addProduct = { ...product, quantity: 1 };
+
+          dispatch(addProductToCart(addProduct));
         }
       });
     },

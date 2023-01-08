@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Button } from "@mui/material";
 
 import style from "./styles.module.scss";
@@ -10,4 +11,4 @@ const ButtonDelete = ({ size, handleDelete }) => {
   );
 };
 
-export default ButtonDelete;
+export default memo(ButtonDelete);

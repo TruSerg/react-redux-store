@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 
 import BasicRating from "../Rating";
@@ -69,4 +70,4 @@ const ProductsDetailsCard = ({
   );
 };
 
-export default ProductsDetailsCard;
+export default memo(ProductsDetailsCard);

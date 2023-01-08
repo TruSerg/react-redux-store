@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import {
   Card,
   CardActions,
@@ -67,4 +69,4 @@ const ProductsCard = ({
   );
 };
 
-export default ProductsCard;
+export default memo(ProductsCard);

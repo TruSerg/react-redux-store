@@ -42,7 +42,7 @@ const ProductsCategoryPageContainer = () => {
 
   useEffect(() => {
     debouncedApplyFilter(searchValue);
-  }, [searchValue]);
+  }, [searchValue, debouncedApplyFilter]);
 
   const handleGoToDetails = useCallback(
     (id) => {
@@ -55,11 +55,13 @@ const ProductsCategoryPageContainer = () => {
     (id) => {
       categoryProductsList.filter((product) => {
         if (product.id === id) {
-          dispatch(addProductToCart(product));
+          const addProduct = { ...product, quantity: 1 };
+
+          dispatch(addProductToCart(addProduct));
         }
       });
     },
-    [categoryProductsList]
+    [dispatch, categoryProductsList]
   );
 
   return (

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
@@ -22,4 +23,4 @@ const BackButton = ({ size }) => {
   );
 };
 
-export default BackButton;
+export default memo(BackButton);

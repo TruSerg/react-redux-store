@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import Header from "../Header/Header";
 
 import style from "./styles.module.scss";
@@ -11,4 +13,4 @@ const MainLayout = ({ children }) => {
   );
 };
 
-export default MainLayout;
+export default memo(MainLayout);

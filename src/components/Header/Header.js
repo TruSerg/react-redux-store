@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
+import { memo } from "react";
 
 import { handleSearchChange } from "../../store/getProductsSlice";
 
@@ -26,4 +27,4 @@ const Header = () => {
     />
   );
 };
-export default Header;
+export default memo(Header);
