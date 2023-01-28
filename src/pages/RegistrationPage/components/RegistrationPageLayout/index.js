@@ -65,8 +65,7 @@ const RegistrationPageLayout = ({
             <div>
               <TextField
                 type="text"
-                value={formData.firstname}
-                name="formData.name.firstname"
+                value={formData.name.firstname}
                 onChange={onChange}
                 placeholder="First name..."
               />
@@ -105,6 +104,33 @@ const RegistrationPageLayout = ({
                 name="formData.address.number"
                 onChange={onChange}
                 placeholder="Number..."
+              />
+            </div>
+            <div>
+              <TextField
+                type="number"
+                value={formData.zipcode}
+                name="formData.address.zipcode"
+                onChange={onChange}
+                placeholder="Zipcode..."
+              />
+            </div>
+            <div>
+              <TextField
+                type="number"
+                value={formData.lat}
+                name="formData.address.geolocation.lat"
+                onChange={onChange}
+                placeholder="lat..."
+              />
+            </div>
+            <div>
+              <TextField
+                type="number"
+                value={formData.long}
+                name="formData.address.geolocation.long"
+                onChange={onChange}
+                placeholder="long..."
               />
             </div>
             <div>

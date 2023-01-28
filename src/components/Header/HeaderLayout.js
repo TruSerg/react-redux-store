@@ -27,7 +27,10 @@ const HeaderLayout = ({ searchValue, cartList, handleChange }) => {
             <Link to={ROUTES.CART_PAGE}>
               <IconButton className={style.iconCart}>
                 <Badge badgeContent={cartList.length} color="success">
-                  <ShoppingCartOutlined fontSize="large" />
+                  <ShoppingCartOutlined
+                    className={style.cartIcon}
+                    fontSize="inherit"
+                  />
                 </Badge>
               </IconButton>
             </Link>

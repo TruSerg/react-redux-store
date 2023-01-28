@@ -16,6 +16,7 @@ import ButtonAddToCart from "../Buttons/ButtonAddToCart";
 import style from "./styles.module.scss";
 
 const ProductsCard = ({
+  id,
   image,
   title,
   price,
@@ -56,7 +57,7 @@ const ProductsCard = ({
       </CardContent>
       <CardActions className={style.cardButtons}>
         <ButtonDetails handleGoToDetails={handleGoToDetails} size="large" />
-        {!isAddItemToCart ? (
+        {!isAddItemToCart(id) ? (
           <ButtonAddToCart
             handleAddProductToCart={handleAddProductToCart}
             size="large"

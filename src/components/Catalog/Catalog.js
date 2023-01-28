@@ -26,7 +26,7 @@ const Catalog = () => {
 
   useEffect(() => {
     dispatch(getProductsCategories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <CatalogLayout

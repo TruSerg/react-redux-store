@@ -21,6 +21,7 @@ const ProductDetailsPageLayout = ({
             <BackButton size="large" />
             <div className={style.wrapperProduct}>
               <ProductDetailsCard
+                id={product.id}
                 category={product.category}
                 image={product.image}
                 title={product.title}

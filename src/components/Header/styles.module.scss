@@ -24,6 +24,10 @@
       justify-content: flex-end;
       gap: 20px;
 
+      .cartIcon {
+        font-size: 40px;
+      }
+
       .iconUser {
         color: #fff;
         transition: color .3s ease-in-out;
@@ -55,6 +59,12 @@
       .headerSearch {
         grid-column: 1/3;
         order: 1;
+      }
+
+      .headerIconButtons {
+        .cartIcon {
+          font-size: 30px;
+        }
       }
     }
   }

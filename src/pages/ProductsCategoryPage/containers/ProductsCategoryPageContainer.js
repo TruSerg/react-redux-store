@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect, useState } from "react";
-import { debounce } from "lodash";
+import { useCallback } from "react";
 
 import { getProductDetails } from "../../../store/getProductDetailsSlice";
-import { addProductToCart } from "../../../store/cartSlice";
+
+import { useSearch } from "../../../hooks";
+import { useCart } from "../../../hooks";
 
 import ProductsCategoryPageLayout from "../components/ProductsCategoryPageLayout";
 
@@ -14,35 +15,9 @@ const ProductsCategoryPageContainer = () => {
     (state) => state.getCategory
   );
 
-  const { cartList } = useSelector((state) => state.cart);
+  const { filteredArray } = useSearch(categoryProductsList);
 
-  const { searchValue } = useSelector((state) => state.getProducts);
-
-  const [filteredCategoryProductsList, setFilteredCategoryProductsList] =
-    useState([]);
-
-  const debouncedApplyFilter = useCallback(
-    debounce((searchValue) => {
-      setFilteredCategoryProductsList(() => {
-        const optimizedSearchValue = searchValue.trim().toLowerCase();
-
-        return categoryProductsList.filter((product) =>
-          product.title.toLowerCase().includes(optimizedSearchValue)
-        );
-      });
-    }, 300),
-    [categoryProductsList]
-  );
-
-  useEffect(() => {
-    if (categoryProductsList.length > 0) {
-      setFilteredCategoryProductsList(categoryProductsList);
-    }
-  }, [categoryProductsList]);
-
-  useEffect(() => {
-    debouncedApplyFilter(searchValue);
-  }, [searchValue, debouncedApplyFilter]);
+  const { handleAddProductToCart, isAddItemToCart } = useCart();
 
   const handleGoToDetails = useCallback(
     (id) => {
@@ -51,24 +26,11 @@ const ProductsCategoryPageContainer = () => {
     [dispatch]
   );
 
-  const handleAddProductToCart = useCallback(
-    (id) => {
-      categoryProductsList.filter((product) => {
-        if (product.id === id) {
-          const addProduct = { ...product, quantity: 1 };
-
-          dispatch(addProductToCart(addProduct));
-        }
-      });
-    },
-    [dispatch, categoryProductsList]
-  );
-
   return (
     <ProductsCategoryPageLayout
-      categoryProductsList={filteredCategoryProductsList}
-      cartList={cartList}
+      categoryProductsList={filteredArray}
       category={categoryItem.category}
+      isAddItemToCart={isAddItemToCart}
       isLoading={isLoading}
       handleGoToDetails={handleGoToDetails}
       handleAddProductToCart={handleAddProductToCart}

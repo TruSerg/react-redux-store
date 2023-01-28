@@ -26,6 +26,11 @@ const RegistrationPageContainer = () => {
       city: "",
       street: "",
       number: "",
+      zipcode: "",
+      geolocation: {
+        lat: "",
+        long: "",
+      },
     },
     phone: "",
   });

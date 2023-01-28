@@ -16,7 +16,7 @@ const Header = () => {
     (e) => {
       dispatch(handleSearchChange(e.target.value));
     },
-    [searchValue]
+    [dispatch, searchValue]
   );
 
   return (

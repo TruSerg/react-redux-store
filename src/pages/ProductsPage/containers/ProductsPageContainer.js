@@ -1,25 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect, useState } from "react";
-import { debounce } from "lodash";
+import { useCallback, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { getAllProducts } from "../../../store/getProductsSlice";
 import { getProductDetails } from "../../../store/getProductDetailsSlice";
-import { addProductToCart } from "../../../store/cartSlice";
+
+import { useSearch } from "../../../hooks";
+import { useCart } from "../../../hooks";
 
 import ProductsPageLayout from "../components/ProductsPageLayout";
+import { ROUTES } from "../../../routes/routeNames";
 
 const ProductsPageContainer = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { products, searchValue, isLoading } = useSelector(
-    (state) => state.getProducts
-  );
+  const { products, isLoading } = useSelector((state) => state.getProducts);
 
-  const { cartList } = useSelector((state) => state.cart);
+  const { filteredArray } = useSearch(products);
 
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
+  const { handleAddProductToCart, isAddItemToCart } = useCart();
 
   const handleGoToDetails = useCallback(
     (id) => {
@@ -28,48 +28,14 @@ const ProductsPageContainer = () => {
     [dispatch]
   );
 
-  const [filteredProducts, setFilteredProducts] = useState([]);
-
-  const debouncedApplyFilter = useCallback(
-    debounce((searchValue) => {
-      setFilteredProducts(() => {
-        const optimizedSearchValue = searchValue.trim().toLowerCase();
-
-        return products.filter((product) =>
-          product.title.toLowerCase().includes(optimizedSearchValue)
-        );
-      });
-    }, 300),
-    [products]
-  );
-
   useEffect(() => {
-    if (products.length > 0) {
-      setFilteredProducts(products);
-    }
-  }, [products]);
-
-  useEffect(() => {
-    debouncedApplyFilter(searchValue);
-  }, [debouncedApplyFilter, searchValue]);
-
-  const handleAddProductToCart = useCallback(
-    (id) => {
-      products.filter((product) => {
-        if (product.id === id) {
-          const addProduct = { ...product, quantity: 1 };
-
-          dispatch(addProductToCart(addProduct));
-        }
-      });
-    },
-    [products]
-  );
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
   return (
     <ProductsPageLayout
-      products={filteredProducts}
-      cartList={cartList}
+      products={filteredArray}
+      isAddItemToCart={isAddItemToCart}
       isLoading={isLoading}
       handleGoToDetails={handleGoToDetails}
       handleAddProductToCart={handleAddProductToCart}

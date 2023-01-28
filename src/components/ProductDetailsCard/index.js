@@ -8,6 +8,7 @@ import ButtonGoToCart from "../Buttons/ButtonGoToCart";
 import style from "./styles.module.scss";
 
 const ProductsDetailsCard = ({
+  id,
   image,
   category,
   title,
@@ -56,7 +57,7 @@ const ProductsDetailsCard = ({
           </Typography>
         </CardContent>
         <CardActions className={style.cardButtons}>
-          {!isAddItemToCart ? (
+          {!isAddItemToCart(id) ? (
             <ButtonAddToCart
               handleAddProductToCart={handleAddProductToCart}
               size="large"

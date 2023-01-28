@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import { RemoveCircle } from "@mui/icons-material";
-import { AddCircle } from "@mui/icons-material";
-
+import { AddCircle, RemoveCircle } from "@mui/icons-material";
 import { Button, IconButton } from "@mui/material";
 
 import { ROUTES } from "../../../../routes/routeNames";
@@ -42,11 +40,7 @@ const CartPageLayout = ({
               {cartList.map((item) => (
                 <div className={style.cartContent} key={item.id}>
                   <div className={style.tableImage}>
-                    <img
-                      className={style.img}
-                      src={item.image}
-                      alt="product image"
-                    />
+                    <img className={style.img} src={item.image} alt="product" />
                   </div>
                   <div className={style.tableTitle}>
                     <p className={style.productTitle}>{item.title}</p>
