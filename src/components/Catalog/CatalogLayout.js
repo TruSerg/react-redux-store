@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Menu, MenuItem } from "@mui/material";
-
-import { getProductsCategory } from "../../store/getCategorySlice";
 
 import { ROUTES } from "../../routes/routeNames";
 
@@ -14,13 +11,12 @@ import style from "./styles.module.scss";
 const CatalogLayout = ({
   categoriesList,
   isLoading,
+  handleFetchCategoryProducts,
   anchorEl,
   open,
   handleClick,
   handleClose,
 }) => {
-  const dispatch = useDispatch();
-
   return (
     <div>
       <MenuIcon
@@ -48,7 +44,7 @@ const CatalogLayout = ({
             {categoriesList.map((category) => (
               <Link
                 key={category}
-                onClick={() => dispatch(getProductsCategory(category))}
+                onClick={() => handleFetchCategoryProducts(category)}
                 to={ROUTES.PRODUCTS_CATEGORY_PAGE}
               >
                 <MenuItem className={style.catalogItem} onClick={handleClose}>

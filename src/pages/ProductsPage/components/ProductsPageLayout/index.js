@@ -18,7 +18,7 @@ const ProductsPageLayout = ({
           <Loader />
         ) : (
           <div className={style.productsWrapper}>
-            {products.map(
+            {products?.map(
               ({ id, image, title, price, description, rating }) => (
                 <ProductCard
                   key={id}

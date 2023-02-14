@@ -1,21 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useCallback } from "react";
 
-import { getAllProducts } from "../../../store/getProductsSlice";
 import { getProductDetails } from "../../../store/getProductDetailsSlice";
+import { useGetProductsQuery } from "../../../store/fakeStoreAPI";
 
 import { useSearch } from "../../../hooks";
 import { useCart } from "../../../hooks";
 
 import ProductsPageLayout from "../components/ProductsPageLayout";
-import { ROUTES } from "../../../routes/routeNames";
 
 const ProductsPageContainer = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const { products, isLoading } = useSelector((state) => state.getProducts);
+  const { isLoading, data: products } = useGetProductsQuery();
 
   const { filteredArray } = useSearch(products);
 
@@ -27,10 +24,6 @@ const ProductsPageContainer = () => {
     },
     [dispatch]
   );
-
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
 
   return (
     <ProductsPageLayout

@@ -6,8 +6,8 @@ import BackButton from "../../../../components/Buttons/BackButton";
 import style from "./styles.module.scss";
 
 const ProductsCategoryPageLayout = ({
-  categoryProductsList,
   category,
+  categoryProductsList,
   isAddItemToCart,
   isLoading,
   handleGoToDetails,
@@ -23,7 +23,7 @@ const ProductsCategoryPageLayout = ({
             <h1 className={style.title}>{category}</h1>
             <BackButton size="large" />
             <div className={style.productsWrapper}>
-              {categoryProductsList.map(
+              {categoryProductsList?.map(
                 ({ id, image, title, price, description, rating }) => (
                   <ProductCard
                     key={id}

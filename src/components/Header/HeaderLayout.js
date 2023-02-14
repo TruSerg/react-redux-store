@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Badge, IconButton } from "@mui/material";
-import { AccountCircle, ShoppingCartOutlined } from "@mui/icons-material";
+import { ShoppingCartOutlined } from "@mui/icons-material";
 
 import { ROUTES } from "../../routes/routeNames";
 
@@ -34,10 +34,6 @@ const HeaderLayout = ({ searchValue, cartList, handleChange }) => {
                 </Badge>
               </IconButton>
             </Link>
-
-            {/*<IconButton className={style.iconUser}>*/}
-            {/*  <AccountCircle fontSize="large" />*/}
-            {/*</IconButton>*/}
           </div>
         </div>
       </Container>

@@ -8,10 +8,12 @@ import {
   deleteProductFromCart,
 } from "../store/cartSlice";
 
+import { useGetProductsQuery } from "../store/fakeStoreAPI";
+
 const useCart = () => {
   const dispatch = useDispatch();
 
-  const { products } = useSelector((state) => state.getProducts);
+  const { data: products } = useGetProductsQuery();
 
   const { cartList } = useSelector((state) => state.cart);
 

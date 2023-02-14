@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { debounce } from "lodash";
 
 const useDebouncedApplySearch = (array) => {
-  const { searchValue } = useSelector((state) => state.getProducts);
+  const { searchValue } = useSelector((state) => state.products);
 
   const [filteredArray, setFilteredArray] = useState([]);
 
@@ -12,7 +12,7 @@ const useDebouncedApplySearch = (array) => {
       setFilteredArray(() => {
         const optimizedSearchValue = searchValue.trim().toLowerCase();
 
-        return array.filter((elem) =>
+        return array?.filter((elem) =>
           elem.title.toLowerCase().includes(optimizedSearchValue)
         );
       });
@@ -21,7 +21,7 @@ const useDebouncedApplySearch = (array) => {
   );
 
   useEffect(() => {
-    if (array.length > 0) {
+    if (array) {
       setFilteredArray(array);
     }
   }, [array]);

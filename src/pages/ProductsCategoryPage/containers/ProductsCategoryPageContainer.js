@@ -3,8 +3,7 @@ import { useCallback } from "react";
 
 import { getProductDetails } from "../../../store/getProductDetailsSlice";
 
-import { useSearch } from "../../../hooks";
-import { useCart } from "../../../hooks";
+import { useCart, useSearch } from "../../../hooks";
 
 import ProductsCategoryPageLayout from "../components/ProductsCategoryPageLayout";
 
@@ -12,7 +11,7 @@ const ProductsCategoryPageContainer = () => {
   const dispatch = useDispatch();
 
   const { categoryProductsList, categoryItem, isLoading } = useSelector(
-    (state) => state.getCategory
+    (state) => state.getCategoryProducts
   );
 
   const { filteredArray } = useSearch(categoryProductsList);
@@ -28,8 +27,8 @@ const ProductsCategoryPageContainer = () => {
 
   return (
     <ProductsCategoryPageLayout
-      categoryProductsList={filteredArray}
       category={categoryItem.category}
+      categoryProductsList={filteredArray}
       isAddItemToCart={isAddItemToCart}
       isLoading={isLoading}
       handleGoToDetails={handleGoToDetails}
